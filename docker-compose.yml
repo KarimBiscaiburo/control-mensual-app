@@ -1,0 +1,38 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      # Expone el puerto 3000 del contenedor al puerto 5959 de la máquina local
+      # Uso el puerto 5959 en mi maquina local para evitar conflictos con otras aplicaciones
+      - 5959:3000
+    volumes:
+      - ./frontend/src:/app/src
+      - /app/node_modules  # Protege los node_modules del contenedor
+    environment:
+      # Defino el mismo puerto que defino para el backend (para facilitar posibles modificaciones)
+      BACKEND_PORT: 3300
+
+  backend:
+    build: ./backend
+    # ports: # Expone el puerto 3300 del contenedor al puerto 3300 de la máquina local
+    # En este caso no quiero exponer el puerto del backend en mi host porque quiero que se comuniquen dentro de la red de docker. Pero lo dejo a modo de ejemplo
+    #  - 3300:3300
+    volumes:
+      - ./backend/src:/app/src
+      - /app/node_modules  # Protege los node_modules del contenedor
+    environment:
+      PORT: 3300 # Puerto del backend 
+    depends_on: # Espera a que el contenedor de la base de datos esté listo antes de iniciar el backend
+      - db
+    
+  db: 
+    image: postgres:17.5-alpine3.21
+    environment:
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
+
+# Por defecto docker-compose crea una red bridge para los contenedores, por lo que no es necesario especificar una red para que se comuniquen entre ellos
