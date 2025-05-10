@@ -29,4 +29,4 @@ EXPOSE 3300
 
 # Comando para iniciar la aplicación
 # CMD se ejecuta cuando se inicia el contenedor
-CMD ["node", "./src/index.js"]
+CMD ["npm", "run", "dev"]
