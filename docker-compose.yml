@@ -9,8 +9,9 @@ services:
       - ./frontend/src:/app/src
       - /app/node_modules  # Protege los node_modules del contenedor
     environment:
-      # Defino el mismo puerto que defino para el backend (para facilitar posibles modificaciones)
-      BACKEND_PORT: 3300
+      # "backend" funciona como referencia al servicio de backend. Esto porque docker utiliza un sistema de DNS interno para resolver los nombres de los contenedores
+      # Utilizo el mismo puerto que defino para el backend (para facilitar posibles modificaciones)
+      BACKEND_URL: http://backend:3300
 
   backend:
     build: ./backend

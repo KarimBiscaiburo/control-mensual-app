@@ -29,4 +29,5 @@ EXPOSE 3300
 
 # Comando para iniciar la aplicación
 # CMD se ejecuta cuando se inicia el contenedor
+# En este caso, se ejecuta el script "dev" definido en package.json. Pero esto es solo para desarrollo, cambiarlo en producción
 CMD ["npm", "run", "dev"]
