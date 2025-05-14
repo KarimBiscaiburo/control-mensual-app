@@ -35,5 +35,5 @@ services:
 
 volumes:
   db_data:
-
+  
 # Por defecto docker-compose crea una red bridge para los contenedores, por lo que no es necesario especificar una red para que se comuniquen entre ellos
