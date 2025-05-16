@@ -23,17 +23,21 @@ services:
       - /app/node_modules  # Protege los node_modules del contenedor
     environment:
       PORT: 3300 # Puerto del backend 
+      # La URL de la base de datos tiene el siguiente formato: postgres://<usuario>:<contraseña>@<host>:<puerto>/<nombre_base_datos>
+      DATABASE_URL: postgres://root:root@db:5432/control-mensual-db # URL de la base de datos
     depends_on: # Espera a que el contenedor de la base de datos esté listo antes de iniciar el backend
       - db
     
   db: 
     image: postgres:17.5-alpine3.21
     environment:
-      - POSTGRES_PASSWORD=root
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: control-mensual-db
     volumes:
       - db_data:/data/db
 
 volumes:
   db_data:
-  
+
 # Por defecto docker-compose crea una red bridge para los contenedores, por lo que no es necesario especificar una red para que se comuniquen entre ellos
