@@ -8,7 +8,8 @@ const app = express();
 
 // Middleware para parsear el cuerpo (req.body) de las solicitudes a JSON
 app.use(express.json());
-app.use(router)
+// Utilizo el router donde se manejan las rutas y defino cual es el punto de entrada ("/api/v1")
+app.use("/api/v1", router);
 
 // Definir el puerto para el servidor
 const PORT = process.env.PORT || 8000;
