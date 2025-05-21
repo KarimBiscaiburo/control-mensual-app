@@ -1,0 +1,5 @@
+
+
+Para poder configurar el inicio de sesion con la cuenta de google (con nextauth) debi crear un proyecto dentro de la consola de google cloud con el nombre de control-mensual-app. Al configurar el consentimiento para poder agregar las credenciales, seleccioné que los usuarios externos a la app van a intentar acceder. Por este motivo se deberan realizar ciertas modificaciones si se lanza el proyecto a produccion:
+
+Disponible para cualquier usuario de prueba con una Cuenta de Google. Tu app se iniciará en modo de prueba y solo estará disponible para los usuarios que agregues a la lista de usuarios de prueba. Una vez que la app esté lista para enviarse a producción, puede que debas verificarla. [Obtén más información sobre el tipo de usuario](https://support.google.com/cloud/answer/15549049?hl=es-419&visit_id=638832065451093986-3652248215&rd=1#user-type)
